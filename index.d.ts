@@ -10,9 +10,9 @@ declare var SimpleToast: {
   BOTTOM: number,
   CENTER: number,
 
-  show: (message: string, duration?: number) => void,
+  show: (message: string, duration?: number, keyboardAvoid?: boolean) => void,
 
-  showWithGravity: (message: string, duration: number, gravity: number) => void
+  showWithGravity: (message: string, duration: number, gravity: number, keyboardAvoid?: boolean) => void
 }
 
 export default SimpleToast
