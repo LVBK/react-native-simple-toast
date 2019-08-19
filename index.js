@@ -14,9 +14,14 @@ var SimpleToast = {
 
   show: function (
     message,
-    duration
+    duration,
+    keyboardAvoid
   ) {
-    RCTToastAndroid.show(message, duration === undefined ? this.SHORT : duration);
+    if(Platform.OS === 'android' ) {
+      RCTToastAndroid.show(message, duration === undefined ? this.SHORT : duration);
+    } else {
+      RCTToastAndroid.show(message, duration === undefined ? this.SHORT : duration, keyboardAvoid);
+    }
   },
 
   showWithGravity: function (
