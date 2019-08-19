@@ -28,8 +28,13 @@ var SimpleToast = {
     message,
     duration,
     gravity,
+    keyboardAvoid
   ) {
-    RCTToastAndroid.showWithGravity(message, duration === undefined ? this.SHORT : duration, gravity);
+    if(Platform.OS === 'android' ) {
+      RCTToastAndroid.showWithGravity(message, duration === undefined ? this.SHORT : duration, gravity);
+    } else {
+      RCTToastAndroid.showWithGravity(message, duration === undefined ? this.SHORT : duration, gravity, keyboardAvoid);
+    }
   },
 };
 

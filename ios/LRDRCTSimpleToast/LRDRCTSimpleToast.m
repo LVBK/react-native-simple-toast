@@ -73,7 +73,7 @@ RCT_EXPORT_METHOD(show:(NSString *)msg duration:(double)duration keyboardAvoid:(
 });
 
 RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration gravity:(nonnull NSNumber *)gravity keyboardAvoid:(BOOL *)keyboardAvoid{
-    [self _show:msg duration:duration gravity:gravity.intValue: keyboardAvoid:keyboardAvoid];
+    [self _show:msg duration:duration gravity:gravity.intValue keyboardAvoid:keyboardAvoid];
 });
 
 - (UIViewController *)visibleViewController:(UIViewController *)rootViewController
