@@ -68,12 +68,12 @@ RCT_EXPORT_MODULE()
     return NO;
 }
 
-RCT_EXPORT_METHOD(show:(NSString *)msg duration:(double)duration {
-    [self _show:msg duration:duration gravity:LRDRCTSimpleToastGravityBottom];
+RCT_EXPORT_METHOD(show:(NSString *)msg duration:(double)duration keyboardAvoid:(BOOL *)keyboardAvoid{
+    [self _show:msg duration:duration gravity:LRDRCTSimpleToastGravityBottom keyboardAvoid: keyboardAvoid];
 });
 
-RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration gravity:(nonnull NSNumber *)gravity{
-    [self _show:msg duration:duration gravity:gravity.intValue];
+RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration gravity:(nonnull NSNumber *)gravity keyboardAvoid:(BOOL *)keyboardAvoid{
+    [self _show:msg duration:duration gravity:gravity.intValue: keyboardAvoid:keyboardAvoid];
 });
 
 - (UIViewController *)visibleViewController:(UIViewController *)rootViewController
@@ -102,13 +102,13 @@ RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration grav
     return [self visibleViewController:presentedViewController];
 }
 
-- (void)_show:(NSString *)msg duration:(NSTimeInterval)duration gravity:(NSInteger)gravity {
+- (void)_show:(NSString *)msg duration:(NSTimeInterval)duration gravity:(NSInteger)gravity keyboardAvoid:(BOOL *)keyboardAvoid {
     dispatch_async(dispatch_get_main_queue(), ^{
         //UIView *root = [[[[[UIApplication sharedApplication] delegate] window] rootViewController] view];
         UIViewController *ctrl = [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
         UIView *root = [ctrl view];
         CGRect bound = root.bounds;
-        bound.size.height -= _keyOffset;
+        bound.size.height -= keyboardAvoid ? 0 : _keyOffset;
         if (bound.size.height > LRDRCTSimpleToastBottomOffset*2) {
             bound.origin.y += LRDRCTSimpleToastBottomOffset;
             bound.size.height -= LRDRCTSimpleToastBottomOffset*2;
