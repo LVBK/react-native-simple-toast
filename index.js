@@ -15,12 +15,13 @@ var SimpleToast = {
   show: function (
     message,
     duration,
-    keyboardAvoid
+    keyboardAvoid,
+    atRoot
   ) {
     if(Platform.OS === 'android' ) {
       RCTToastAndroid.show(message, duration === undefined ? this.SHORT : duration);
     } else {
-      RCTToastAndroid.show(message, duration === undefined ? this.SHORT : duration, keyboardAvoid);
+      RCTToastAndroid.show(message, duration === undefined ? this.SHORT : duration, keyboardAvoid, atRoot);
     }
   },
 
@@ -28,12 +29,13 @@ var SimpleToast = {
     message,
     duration,
     gravity,
-    keyboardAvoid
+    keyboardAvoid,
+    atRoot
   ) {
     if(Platform.OS === 'android' ) {
       RCTToastAndroid.showWithGravity(message, duration === undefined ? this.SHORT : duration, gravity);
     } else {
-      RCTToastAndroid.showWithGravity(message, duration === undefined ? this.SHORT : duration, gravity, keyboardAvoid);
+      RCTToastAndroid.showWithGravity(message, duration === undefined ? this.SHORT : duration, gravity, keyboardAvoid, atRoot);
     }
   },
 };
