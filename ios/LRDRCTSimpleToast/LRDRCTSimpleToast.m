@@ -43,7 +43,7 @@ NSInteger const LRDRCTSimpleToastGravityTop = 3;
     
     int height = MIN(keyboardSize.height, keyboardSize.width);
   
-    _keyOffset = height;
+    _keyOffset = height + 16;
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
