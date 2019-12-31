@@ -42,8 +42,12 @@ NSInteger const LRDRCTSimpleToastGravityTop = 3;
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     int height = MIN(keyboardSize.height, keyboardSize.width);
-  
-    _keyOffset = height + 16;
+    _keyOffset = height;
+    
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        _keyOffset = height + mainWindow.safeAreaInsets.bottom;
+    }
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
