@@ -9,7 +9,7 @@
 #import "RCTBridgeModule.h"
 #import "UIView+Toast.h"
 
-NSInteger const LRDRCTSimpleToastBottomOffset = 70;
+NSInteger const LRDRCTSimpleToastBottomOffset = 40;
 double const LRDRCTSimpleToastShortDuration = 3.0;
 double const LRDRCTSimpleToastLongDuration = 5.0;
 NSInteger const LRDRCTSimpleToastGravityBottom = 1;
